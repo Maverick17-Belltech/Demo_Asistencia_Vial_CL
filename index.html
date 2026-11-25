@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DEMO · Seguros Andes · Asistencia Auto Plus</title>
+<style>
+  :root{--navy:#0f1d2b;--navy2:#172a3d;--amber:#f5b301;--amber2:#ffcf4a;--txt:#1d2733;--muted:#5b6876;--bg:#f4f6f8;--red:#d62f2f;--white:#fff}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--txt);background:var(--bg);line-height:1.55}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+  /* Emergencia */
+  .demo{background:#fff4d1;color:#5a4a12;text-align:center;font-weight:700;font-size:.95rem;padding:8px 12px;border-bottom:1px solid #f5b301}
+  .sos{background:var(--red);color:#fff;font-size:.95rem;text-align:center;padding:8px 12px}
+  .sos b{font-size:1.05rem}
+  /* Header */
+  header{background:var(--navy);color:#fff;position:sticky;top:0;z-index:10}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.2rem}
+  .logo svg{flex:none}
+  .logo small{display:block;font-weight:400;font-size:.75rem;color:#b9c6d3;letter-spacing:.04em}
+  nav a{margin-left:22px;font-size:.95rem;color:#d7e0e8}
+  nav a:hover{color:var(--amber2)}
+  nav .btn{margin-left:22px}
+  .btn{display:inline-block;background:var(--amber);color:var(--navy);font-weight:700;padding:12px 22px;border-radius:999px;transition:.15s}
+  .btn:hover{background:var(--amber2)}
+  .btn.ghost{background:transparent;color:#fff;border:2px solid #ffffff55}
+  .btn.ghost:hover{border-color:#fff}
+  /* Hero */
+  .hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 60%,#20384f 100%);color:#fff;position:relative;overflow:hidden}
+  .hero .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;padding-top:72px;padding-bottom:88px}
+  .hero h1{font-size:2.6rem;line-height:1.15;margin-bottom:16px}
+  .hero h1 span{color:var(--amber)}
+  .hero p{color:#c9d5e0;font-size:1.1rem;margin-bottom:28px;max-width:520px}
+  .hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
+  .road{position:absolute;left:0;right:0;bottom:0;height:14px;background:repeating-linear-gradient(90deg,var(--amber) 0 60px,transparent 60px 110px);opacity:.85}
+  .card-hero{background:#ffffff10;border:1px solid #ffffff22;border-radius:18px;padding:26px}
+  .card-hero h3{font-size:1rem;color:var(--amber2);margin-bottom:14px;text-transform:uppercase;letter-spacing:.06em}
+  .card-hero li{list-style:none;display:flex;gap:10px;margin-bottom:12px;color:#e3eaf1}
+  .card-hero li::before{content:"✓";color:var(--amber);font-weight:700}
+  /* Secciones */
+  section{padding:72px 0}
+  h2{font-size:1.9rem;margin-bottom:8px;color:var(--navy)}
+  .lead{color:var(--muted);margin-bottom:36px;max-width:640px}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .svc{background:#fff;border-radius:16px;padding:26px;box-shadow:0 2px 10px #0f1d2b10;border-top:4px solid var(--amber)}
+  .svc .ic{width:48px;height:48px;border-radius:12px;background:#fff4d1;display:grid;place-items:center;margin-bottom:14px}
+  .svc h3{font-size:1.1rem;margin-bottom:6px;color:var(--navy)}
+  .svc p{color:var(--muted);font-size:.95rem}
+  .cov{background:#fff}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  .stat{display:flex;gap:18px;align-items:flex-start;padding:20px;border:1px solid #e3e8ed;border-radius:14px;margin-bottom:16px}
+  .stat b{font-size:2rem;color:var(--navy);min-width:86px;line-height:1}
+  .stat b small{font-size:.85rem;color:var(--muted);display:block;font-weight:400;margin-top:4px}
+  .stat p{color:var(--muted)}
+  .note{background:#fff8e1;border-left:4px solid var(--amber);padding:16px 18px;border-radius:8px;color:#5a4a12;font-size:.95rem}
+  .steps{counter-reset:s;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .step{background:#fff;border-radius:16px;padding:24px;position:relative;box-shadow:0 2px 10px #0f1d2b10}
+  .step::before{counter-increment:s;content:counter(s);position:absolute;top:-16px;left:22px;width:34px;height:34px;border-radius:50%;background:var(--navy);color:var(--amber);font-weight:700;display:grid;place-items:center}
+  .step h3{font-size:1.02rem;margin:8px 0 6px;color:var(--navy)}
+  .step p{color:var(--muted);font-size:.93rem}
+  /* Llamar */
+  .call{background:var(--navy);color:#fff}
+  .call h2{color:#fff}
+  .call .lead{color:#c9d5e0}
+  .call-box{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+  .tips{background:#ffffff0d;border:1px solid #ffffff22;border-radius:16px;padding:24px}
+  .tips h3{color:var(--amber2);font-size:1rem;margin-bottom:12px}
+  .tips li{margin:0 0 10px 18px;color:#dbe4ec}
+  .emer{background:var(--red);border-radius:16px;padding:24px}
+  .emer h3{font-size:1.15rem;margin-bottom:8px}
+  .emer .nums{display:flex;gap:14px;margin-top:14px}
+  .emer .nums div{background:#ffffff22;border-radius:12px;padding:12px 18px;text-align:center}
+  .emer .nums b{font-size:1.8rem;display:block;line-height:1}
+  footer{background:#0a141e;color:#8fa0b0;font-size:.85rem;padding:28px 0}
+  footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  @media (max-width:900px){
+    .hero .wrap,.grid2,.call-box{grid-template-columns:1fr}
+    .grid4,.steps{grid-template-columns:1fr 1fr}
+    nav a:not(.btn){display:none}
+    .hero h1{font-size:2rem}
+  }
+  @media (max-width:560px){.grid4,.steps{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="demo">⚠ Página de demostración únicamente. Marca, datos y servicios ficticios; no es un servicio real.</div>
+
+<div class="sos">🚨 ¿Hay personas heridas? Llama primero al <b>131</b> (SAMU) y, si hay riesgo en la vía, al <b>133</b> (Carabineros).</div>
+
+<header>
+  <div class="wrap">
+    <a href="#" class="logo">
+      <svg width="38" height="38" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 32 L16 10 L22 20 L26 14 L36 32 Z" fill="#f5b301"/><path d="M16 10 L19.5 16.5 L14 16.5 Z" fill="#fff"/></svg>
+      <div>Seguros Andes<small>ASISTENCIA AUTO PLUS</small></div>
+    </a>
+    <nav>
+      <a href="#servicios">Servicios</a>
+      <a href="#cobertura">Cobertura</a>
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#llamar" class="btn">Pedir asistencia</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Asistencia en ruta <span>24/7</span> en todo Chile</h1>
+      <p>¿Pana, neumático pinchado o batería descargada? Llámanos y nuestro asistente virtual te atiende al instante: te identifica, revisa tu plan y coordina la ayuda en la misma llamada.</p>
+      <div class="ctas">
+        <a href="#llamar" class="btn">📞 Llamar desde la web</a>
+        <a href="#cobertura" class="btn ghost">Ver mi cobertura</a>
+      </div>
+    </div>
+    <div class="card-hero">
+      <h3>En una sola llamada</h3>
+      <ul>
+        <li>Te reconocemos por tu número o tu RUT</li>
+        <li>Confirmamos tu vehículo y tu ubicación</li>
+        <li>Revisamos tu cobertura al momento</li>
+        <li>Te damos el número de servicio y el tiempo estimado de llegada</li>
+        <li>Si lo necesitas, te pasamos con un ejecutivo</li>
+      </ul>
+    </div>
+  </div>
+  <div class="road"></div>
+</div>
+
+<section id="servicios">
+  <div class="wrap">
+    <h2>Servicios incluidos</h2>
+    <p class="lead">Tu plan Asistencia Auto Plus te acompaña en carretera y en ciudad, las 24 horas, todos los días del año.</p>
+    <div class="grid4">
+      <div class="svc">
+        <div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0f1d2b" stroke-width="1.8"><path d="M2 16h13V8h4l3 4v4h-2"/><circle cx="6" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M2 16V6l7 4"/></svg></div>
+        <h3>Grúa</h3>
+        <p>Traslado de tu vehículo al taller o destino que elijas cuando no puede seguir andando.</p>
+      </div>
+      <div class="svc">
+        <div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0f1d2b" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 3v5.5M12 15.5V21M3 12h5.5M15.5 12H21"/></svg></div>
+        <h3>Cambio de neumático</h3>
+        <p>Un técnico llega a tu ubicación y cambia el neumático pinchado por tu repuesto.</p>
+      </div>
+      <div class="svc">
+        <div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0f1d2b" stroke-width="1.8"><rect x="3" y="7" width="18" height="12" rx="2"/><path d="M7 7V5M17 7V5M7 13h3M15.5 11.5v3M14 13h3"/></svg></div>
+        <h3>Batería</h3>
+        <p>Si el auto no parte, te ayudamos con el arranque de la batería en el lugar.</p>
+      </div>
+      <div class="svc">
+        <div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0f1d2b" stroke-width="1.8"><circle cx="8" cy="12" r="4"/><path d="M12 12h9M18 12v3M21 12v2"/></svg></div>
+        <h3>Cerrajería</h3>
+        <p>¿Dejaste las llaves adentro? Enviamos un cerrajero para abrir tu vehículo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cobertura" class="cov">
+  <div class="wrap grid2">
+    <div>
+      <h2>Tu cobertura</h2>
+      <p class="lead">Condiciones del plan Asistencia Auto Plus.</p>
+      <div class="stat"><b>3<small>eventos</small></b><p>Por tipo de servicio, en los últimos 12 meses.</p></div>
+      <div class="stat"><b>50<small>km</small></b><p>Recorrido de grúa cubierto por cada evento.</p></div>
+      <div class="stat"><b>24/7<small>todo el año</small></b><p>Atención las 24 horas, incluidos fines de semana y feriados.</p></div>
+    </div>
+    <div>
+      <h2>Bueno saber</h2>
+      <p class="lead">Lo que más nos preguntan.</p>
+      <div class="stat"><b>👤</b><p><strong>¿El auto está a nombre de otra persona?</strong><br>La cobertura incluye a los conductores autorizados por el titular del plan.</p></div>
+      <div class="stat"><b>📍</b><p><strong>¿Estás en carretera?</strong><br>Ten a mano el kilómetro del letrero más cercano o un punto de referencia.</p></div>
+      <div class="note">Si ya usaste todos tus eventos o el traslado supera los kilómetros cubiertos, te ofrecemos el servicio con una tarifa preferente o te comunicamos con un ejecutivo.</div>
+    </div>
+  </div>
+</section>
+
+<section id="como-funciona">
+  <div class="wrap">
+    <h2>Cómo funciona</h2>
+    <p class="lead">Pedir asistencia toma menos de dos minutos.</p>
+    <div class="steps">
+      <div class="step"><h3>Llámanos</h3><p>Desde tu celular o con el botón de llamada de esta página.</p></div>
+      <div class="step"><h3>Te identificamos</h3><p>Por el número desde el que llamas o con tu RUT y la patente.</p></div>
+      <div class="step"><h3>Cuéntanos qué pasó</h3><p>Dinos el problema y dónde estás. Revisamos tu cobertura al instante.</p></div>
+      <div class="step"><h3>La ayuda va en camino</h3><p>Te confirmamos el número de servicio y el tiempo estimado de llegada.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="llamar" class="call">
+  <div class="wrap">
+    <h2>Llámanos desde la web</h2>
+    <p class="lead">Habla con nuestro asistente virtual directamente desde tu navegador, sin costo de llamada.</p>
+    <div class="call-box">
+      <div class="tips">
+        <h3>Antes de llamar</h3>
+        <ul>
+          <li>Usa el botón de llamada de esta página y permite el acceso al micrófono cuando el navegador lo pida.</li>
+          <li>Ten a mano tu RUT y la patente del vehículo.</li>
+          <li>Si estás en la vía, ubícate en un lugar seguro y enciende las luces de emergencia.</li>
+          <li>Puedes hablar con naturalidad e interrumpir al asistente cuando quieras.</li>
+        </ul>
+      </div>
+      <div class="emer">
+        <h3>¿Accidente con lesionados?</h3>
+        <p>Tu seguridad es lo primero. Llama a emergencias antes de pedir la grúa.</p>
+        <div class="nums">
+          <div><b>131</b>SAMU</div>
+          <div><b>133</b>Carabineros</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Seguros Andes · Asistencia Auto Plus</div>
+    <div>Página de demostración únicamente. Marca, datos y servicios ficticios; no es un servicio real.</div>
+  </div>
+</footer>
+
+<!-- Widget Click-to-Call (Cognigy) -->
+<script src="https://github.com/Cognigy/click-to-call-widget/releases/latest/download/webRTCWidget.js"></script>
+<script>
+	addEventListener("load", (event) => {if (window.initWebRTCWidget) {window.initWebRTCWidget("wss://endpoint-trial.cognigy.ai/ba6d5ac9eb2906914ac27e361985d48d474a210f4a39513174fae596733be5ec/voiceGateway")}});
+</script>
+</body>
+</html>
