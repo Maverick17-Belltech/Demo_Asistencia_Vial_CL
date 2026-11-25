@@ -100,7 +100,7 @@
       <a href="#servicios">Servicios</a>
       <a href="#cobertura">Cobertura</a>
       <a href="#como-funciona">Cómo funciona</a>
-      <a href="#llamar" class="btn">Pedir asistencia</a>
+      <a href="#llamar" class="btn" data-llamar>Pedir asistencia</a>
     </nav>
   </div>
 </header>
@@ -111,7 +111,7 @@
       <h1>Asistencia en ruta <span>24/7</span> en todo Chile</h1>
       <p>¿Pana, neumático pinchado o batería descargada? Llámanos y nuestro asistente virtual te atiende al instante: te identifica, revisa tu plan y coordina la ayuda en la misma llamada.</p>
       <div class="ctas">
-        <a href="#llamar" class="btn">📞 Llamar desde la web</a>
+        <a href="#llamar" class="btn" data-llamar>📞 Llamar desde la web</a>
         <a href="#cobertura" class="btn ghost">Ver mi cobertura</a>
       </div>
     </div>
@@ -226,7 +226,16 @@
 <!-- Widget Click-to-Call (Cognigy) -->
 <script src="https://github.com/Cognigy/click-to-call-widget/releases/latest/download/webRTCWidget.js"></script>
 <script>
-	addEventListener("load", (event) => {if (window.initWebRTCWidget) {window.initWebRTCWidget("wss://endpoint-trial.cognigy.ai/ba6d5ac9eb2906914ac27e361985d48d474a210f4a39513174fae596733be5ec/voiceGateway")}});
+	addEventListener("load", (event) => {if (window.initWebRTCWidget) {window.initWebRTCWidget("https://endpoint-trial.cognigy.ai/ba6d5ac9eb2906914ac27e361985d48d474a210f4a39513174fae596733be5ec")}});
+</script>
+<script>
+	// Los botones "Llamar desde la web" y "Pedir asistencia" inician la llamada del widget
+	document.addEventListener("click", (e) => {
+		const cta = e.target.closest("[data-llamar]");
+		if (!cta) return;
+		const boton = document.querySelector(".webrtc_widget_call_button");
+		if (boton) { e.preventDefault(); boton.click(); }
+	});
 </script>
 </body>
 </html>
